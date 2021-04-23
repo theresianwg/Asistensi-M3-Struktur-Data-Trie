@@ -7,7 +7,22 @@ Kata “trie” berasal dari kata retrieval yang berarti pengambilan. Struktur d
 struct trie {
     char chr;
     int  word;
-    struct trie* edge[128];
+    struct trie* edge[130];
 } *root = 0;
+
+root = (struct trie*)malloc(sizeof(struct trie));
+root->chr  = ‘’;
+root->word = 0;
 ```
+### Memasukkan sebuah kata pada trie
+```
+void insert(struct trie *curr, char *p) {
+    if ( curr->edge[*p] == 0 )
+        curr->edge[*p] = newnode(*p);
+    if ( *p == 0 ) curr->word = 1;     else insert(curr->edge[*p],p+1); }
+```
+
+
+
+
 
