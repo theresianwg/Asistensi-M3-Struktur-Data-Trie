@@ -7,15 +7,22 @@ Kata ```“trie”``` berasal dari kata retrieval yang berarti pengambilan. Stru
 ## Contoh Pengimplementasian
 ### Struktur Trie 
 ```
-struct trie {
-    char chr;
-    int  word;
-    struct trie* edge[130];
-} *root = 0;
+struct Trie{
 
-root = (struct trie*)malloc(sizeof(struct trie));
-root->chr  = ‘’;
-root->word = 0;
+	bool is_terminal; 
+	Trie * children[ALPHABETS];
+
+	
+	Trie(): is_terminal(false){
+		memset(children, 0, sizeof(children));
+	}
+
+	~Trie(){
+		for(int i = 0; i < ALPHABETS; ++i){
+			if(children[i])
+				delete children[i];
+		}
+	}
 ```
 ## Macam-macam Trie
 ### Bitwise Trie
@@ -42,8 +49,6 @@ adalah panjang maksimum string dalam himpunan :
 
 # Referensi
 https://informatika.stei.itb.ac.id/~rinaldi.munir/Matdis/2010-2011/Makalah2010/MakalahStrukdis2010-091.pdf
-
-http://asal-ngaran.blogspot.com/2011/06/tugas-struktur-data-trie.html
 
 https://twpower.github.io/186-trie-concept-and-basic-problem-en
 
