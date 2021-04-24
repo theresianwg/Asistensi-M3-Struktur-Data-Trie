@@ -17,6 +17,24 @@ root = (struct trie*)malloc(sizeof(struct trie));
 root->chr  = ‘’;
 root->word = 0;
 ```
+```
+void insert(struct trie *curr, char *p) {
+    if ( curr->edge[*p] == 0 )
+        curr->edge[*p] = newnode(*p);
+    if ( *p == 0 ) curr->word = 1;     else insert(curr->edge[*p],p+1); }
+```
+```
+newnode() function
+struct trie* newnode(char x) {
+    struct trie* node =
+        (struct trie*)malloc(sizeof(struct trie));
+    node->chr  = x;
+    node->word = 0;
+    for (i = 0; i < 128; i++ )
+        node->edge[i] = 0;
+    return node;
+}
+```
 
 ## Macam-macam Trie
 ### Bitwise Trie
@@ -32,7 +50,7 @@ adalah panjang maksimum string dalam himpunan :
 - ``` Search ``` : Mencari keberadaan suatu string pada himpunan string. Operasi ini sama dengan pencarian pada trie biasa kecuali beberapa sisi mengandung lebih dari satu karakter.
 
 - ``` Insert ``` : Menambahkan sebuah string ke pohon. Kita mencari tempat yang tepat di pohon untuk menyisipkan elemen baru. Jika sudah ada sisi yang memiliki prefix sama dengan string masukan, kita akan memisahkan nya menjadi dua sisi dan memprosesnya. Proses pemisahan ini meyakinkan bahwa tidak ada node yang memiliki anak lebih banyak dari jumlah karakter string yang ada.
- 
+
 - ``` Remove ``` : Menghapus sebuah string dari pohon.Pertama kita menghapus daun yang berkaitan.Lalu, jika orangtuanya hanya memiliki satu children lagi, kita menghapus parent dan menggabungkan sisi yang saling terhubung.
 
 - ``` Search Children ``` : Mencari string terbesar yang lebih kecil dari string masukan, sesuai dengan urutan alfabet. 
