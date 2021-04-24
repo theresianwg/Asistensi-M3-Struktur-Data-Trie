@@ -17,25 +17,6 @@ root = (struct trie*)malloc(sizeof(struct trie));
 root->chr  = ‘’;
 root->word = 0;
 ```
-```
-void insert(struct trie *curr, char *p) {
-    if ( curr->edge[*p] == 0 )
-        curr->edge[*p] = newnode(*p);
-    if ( *p == 0 ) curr->word = 1;     else insert(curr->edge[*p],p+1); }
-```
-```
-newnode() function
-struct trie* newnode(char x) {
-    struct trie* node =
-        (struct trie*)malloc(sizeof(struct trie));
-    node->chr  = x;
-    node->word = 0;
-    for (i = 0; i < 128; i++ )
-        node->edge[i] = 0;
-    return node;
-}
-```
-
 ## Macam-macam Trie
 ### Bitwise Trie
 Bitwise trie memiliki banyak kesamaan dengan trie berbasis karakter biasa, kecuali dalam representasi dengan bit individual yang biasanya digunakan untuk traversal secara efektif dan membentuk sebuah pohon biner. Nilai ini lalu akan digunakan sebagai entri dari tabel dengan indeks 32 atau 64 yang menunujuk kepada elemen pertama dalam bitwise trie
