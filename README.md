@@ -19,7 +19,8 @@ root->word = 0;
 void insert(struct trie *curr, char *p) {
     if ( curr->edge[*p] == 0 )
         curr->edge[*p] = newnode(*p);
-    if ( *p == 0 ) curr->word = 1;     else insert(curr->edge[*p],p+1); }
+    if ( *p == 0 ) curr->word = 1;     
+    else insert(curr->edge[*p],p+1); }
 ```
 
 
